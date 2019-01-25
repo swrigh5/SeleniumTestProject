@@ -18,10 +18,31 @@ namespace UnitTestProject1
             driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
         }
 
-        [Test]
-        public void TestMethod1()
+        [TearDown]
+        public void TearDown()
         {
-            
+            driver.Quit();
+            driver.Dispose();
+        }
+
+        [Test]
+        public void FindElementsClickTest()
+        {
+            var idElement = driver.FindElement(By.Id("idExample"));
+            idElement.Click();
+            driver.Navigate().Back();
+
+            idElement = driver.FindElement(By.LinkText("Click me using this link text!"));
+            idElement.Click();
+            driver.Navigate().Back();
+        }
+
+
+        [Test]
+        public void XPathTest()
+        {
+
+
         }
     }
 }
