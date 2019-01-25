@@ -28,22 +28,40 @@ namespace UnitTestProject1
         [Test]
         public void FindElementsClickTest()
         {
-            var idElement = driver.FindElement(By.Id("idExample"));
-            idElement.Click();
+            var element = driver.FindElement(By.Id("idExample"));
+            element.Click();
             driver.Navigate().Back();
 
-            idElement = driver.FindElement(By.LinkText("Click me using this link text!"));
-            idElement.Click();
-            driver.Navigate().Back();
+            element = driver.FindElement(By.LinkText("Click me using this link text!"));
+            element.Click();
         }
 
 
         [Test]
         public void XPathTest()
         {
+            var element = driver.FindElement(By.XPath("//*[@class='et_pb_button et_pb_promo_button'][@href='/button-success']"));
+            element.Click();
+            driver.Navigate().Back();
 
-
+            element = driver.FindElement(By.XPath("//*[@class='et_pb_button et_pb_promo_button'][@href='https://courses.ultimateqa.com/users/sign_in']"));
+            element.Click();
         }
+
+
+        [Test]
+        public void XPathCompoundNegativeTest()
+        {
+            System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> elements;
+
+
+            Assert.Throws<InvalidSelectorException>(()
+                => elements = driver.FindElements(By.ClassName("et_pb_button et_pb_promo_button")));
+        }
+
+
+
+
     }
 }
  
