@@ -46,7 +46,7 @@ namespace UnitTestProject1
 
             element = driver.FindElement(By.XPath("//*[@class='et_pb_button et_pb_promo_button'][@href='https://courses.ultimateqa.com/users/sign_in']"));
             element.Click();
-        }
+       }
 
 
         [Test]

@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exams\XPath1.cs" />
+    <Compile Include="Quizzes\NavigationQuiz.cs" />
     <Compile Include="WebDriverFactory.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
