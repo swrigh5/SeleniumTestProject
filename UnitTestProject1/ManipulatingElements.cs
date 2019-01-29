@@ -25,12 +25,17 @@ namespace UnitTestProject1
         [Test]
         public void test1()
         {
-            ///clear name field
-            ///type into field
-            ///
-            ///clear text field
-            ///type into field
-            ///submit
+            //var namefield = driver.FindElement(By.XPath("//*[@id='et_pb_contact_name_0']"));
+            var namefield = driver.FindElement(By.Id("et_pb_contact_name_0"));
+            namefield.Clear();
+            namefield.SendKeys("Stephen Wright");
+
+            var messagefield = driver.FindElement(By.XPath("//*[@id='et_pb_contact_message_0']"));
+            messagefield.Clear();
+            messagefield.SendKeys("Hello there");
+
+            var submit = driver.FindElement(By.XPath("//*[@class='et_pb_contact_submit et_pb_button']"));           
+            submit.Click();  
             
         }
 
