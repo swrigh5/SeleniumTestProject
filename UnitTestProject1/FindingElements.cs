@@ -7,7 +7,7 @@ namespace UnitTestProject1
 {
    
     [TestFixture]
-    public class UnitTest1
+    public class FindingElements
     {
         public IWebDriver driver { get; private set; }
 
