@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -35,11 +36,32 @@ namespace UnitTestProject1.Exams
             driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
         }
 
+
+
         [TearDown]
         public void TearDown()
         {
             driver.Quit();
             driver.Dispose();
+        }
+
+
+        private void HighlightElementUsingJavaScript(By locationStrategy, int duration = 2)
+        {
+            var element = driver.FindElement(locationStrategy);
+            var originalStyle = element.GetAttribute("style");
+            IJavaScriptExecutor JavaScriptExecutor = driver as IJavaScriptExecutor;
+            JavaScriptExecutor.ExecuteScript("arguments[0].setAttribute(arguments[1], arguments[2])",
+                element,
+                "style",
+                "border: 7px solid yellow; border-style: dashed;");
+
+            if (duration <= 0) return;
+            Thread.Sleep(TimeSpan.FromSeconds(duration));
+            JavaScriptExecutor.ExecuteScript("arguments[0].setAttribute(arguments[1], arguments[2])",
+                element,
+                "style",
+                originalStyle);
         }
 
 
@@ -68,26 +90,29 @@ namespace UnitTestProject1.Exams
         [Test]
         public void selectAudiFromDropDown()
         {
-            var element = driver.FindElement(By.XPath("//[@value='audi']"));
+            var element = driver.FindElement(By.XPath("//*[@value='audi']"));
             element.Click();
 
-            Assert.That(element.Displayed, Is.True);
-           
-
+            Assert.That(element.Displayed, Is.True);          
         }
 
 
         [Test]
         public void openTab2()
         {
+        
 
+            var element = driver.FindElement(By.XPath("//*[@class='et_pb_tab_1']"));
+            element.Click();
+
+            Assert.AreEqual("Tab 2 content", driver.FindElement(By.XPath("//*[@class='et_pb_tab et_pb_tab_1 clearfix et-pb-active-slide']")).Text);
         }
 
 
         [Test]
         public void highlightSalary()
         {
-
+            HighlightElementUsingJavaScript(By.XPath("//td[contains(text(), '$150,000+')]"));
         }
 
 
@@ -95,6 +120,9 @@ namespace UnitTestProject1.Exams
         public void highlightMe()
         {
 
+           /// HighlightElementUsingJavaScript(By.ClassName("et_pb_column et_pb_column_1_3  et_pb_column_10 et_pb_css_mix_blend_mode_passthrough"));
+            HighlightElementUsingJavaScript(
+            By.XPath("//*[@class='et_pb_column et_pb_column_1_3 et_pb_column_10    et_pb_css_mix_blend_mode_passthrough']"));
         }
 
     }
