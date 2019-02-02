@@ -36,7 +36,7 @@ namespace UnitTestProject1.Quizzes
             msg.Clear();
             msg.SendKeys("Hello there");
 
-            var captchaTxt = driver.FindElement(By.ClassName("et_pb_contact_captcha_question")).Text;
+            var captchaTxt = driver.FindElement(By.ClassName("et_pb_contact_captcha_question")).Text; 
             var answer = AddStrings(captchaTxt);
 
             driver
