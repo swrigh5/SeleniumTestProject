@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exams\XPath1.cs" />
+    <Compile Include="ExplicitWaits.cs" />
     <Compile Include="ManipulatingElements.cs" />
     <Compile Include="Quizzes\ElementInterrogationQuiz.cs" />
     <Compile Include="Quizzes\ElementManipulationQuiz.cs" />
