@@ -65,16 +65,6 @@ namespace UnitTestProject1
         }
 
 
-        [Test]
-        public void FixedExplicitWait2()
-        {
-
-        }
-
-        private bool ExpectVisibleText(string id)
-        {
-            
-        }
 
 
 
