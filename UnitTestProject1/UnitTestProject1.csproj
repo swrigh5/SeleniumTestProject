@@ -57,6 +57,8 @@
     <Compile Include="Exams\XPath1.cs" />
     <Compile Include="ExplicitWaits.cs" />
     <Compile Include="ManipulatingElements.cs" />
+    <Compile Include="MouseAndKeyboardActions.cs" />
+    <Compile Include="Quizzes\DragAndDropQuiz.cs" />
     <Compile Include="Quizzes\ElementInterrogationQuiz.cs" />
     <Compile Include="Quizzes\ElementManipulationQuiz.cs" />
     <Compile Include="Quizzes\NavigationQuiz.cs" />
